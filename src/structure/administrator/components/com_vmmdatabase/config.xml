@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<fieldset
+		name="customer"
+		label="com_vmmdatabase_FIELD_CONFIG_INDIVIDUAL_CUSTOMER_DISPLAY"
+		description="COM_VMMDATABASE_FIELD_CONFIG_INDIVIDUAL_CUSTOMER_DESC"
+		>
+
+
+    <field name="oberertext" type="editor" label="Hinweistext Oben" description="" width="300" filter="RAW" />
+    <field name="hinweistext" type="editor" label="Hinweistext Tabelle" description="" width="300" filter="RAW" />
+
+
+	</fieldset>
+	<fieldset
+		name="permissions"
+		label="JCONFIG_PERMISSIONS_LABEL"
+		description="JCONFIG_PERMISSIONS_DESC"
+		>
+		<field
+			name="rules"
+			type="rules"
+			label="JCONFIG_PERMISSIONS_LABEL"
+			validate="rules"
+			filter="rules"
+			component="com_vmmdatabase"
+			section="component"
+		/>
+	</fieldset>
+</config>

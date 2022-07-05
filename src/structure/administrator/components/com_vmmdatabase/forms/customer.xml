@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset
+		addruleprefix="CustomerNamespace\Component\Vmmdatabase\Administrator\Rule"
+		addfieldprefix="CustomerNamespace\Component\Vmmdatabase\Administrator\Field"
+  >
+
+		<field
+			name="id"
+			type="number"
+			label="JGLOBAL_FIELD_ID_LABEL"
+			default="0"
+			class="readonly"
+			readonly="true"
+		/>
+
+		<field
+			name="title"
+			type="text"
+			validate="Letter"
+			class="validate-letter"
+			label="COM_VMMDATABASE_FIELD_NAME_LABEL"
+			size="40"
+			required="true"
+		 />
+
+    <fields name="zugangsdaten" label="Zugangsdaten">
+      <fieldset name="zugang" label="Zugangsdaten für Apps / Abos etc.">
+        <field
+          name="app_url"
+          type="text"
+          label="Website"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="app_user"
+          type="text"
+          label="Benutzer"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="app_pass"
+          type="text"
+          label="Passwort"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="app_key"
+          type="subform"
+          label="Lizenzkeys"
+          description=""
+          multiple="true"
+        >
+          <form>
+            <field
+              name="lizenzbeschreibung"
+              type="text"
+              label="Beschreibung"
+              description=""
+            />
+            <field
+              name="lizenzkey"
+              type="text"
+              label="Key"
+              description=""
+            />
+          </form>
+        </field>
+      </fieldset>
+    </fields>
+
+    <fields name="projektdaten" label="Projektdaten">
+      <fieldset name="basisdaten" label="Basisdaten">
+        <field
+          name="prj_customer"
+          type="text"
+          label="Firma / Kunde"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_url"
+          type="text"
+          label="Website"
+          size="40"
+          required="false"
+          default=""
+        />
+      </fieldset>
+      <fieldset name="hosting" label="Hosting">
+        <field
+          name="prj_hosting_url"
+          type="text"
+          label="Hosting URL"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_hosting_user"
+          type="text"
+          label="Hosting Benutzername"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+        name="prj_hosting_pass"
+        type="text"
+        label="Hosting Passwort"
+        size="40"
+        required="false"
+        default=""
+        />
+      </fieldset>
+      <fieldset name="ftp" label="FTP">
+        <field
+          name="prj_ftp_adress"
+          type="text"
+          label="FTP Adresse"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_ftp_user"
+          type="text"
+          label="FTP Benutzername"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_ftp_pass"
+          type="text"
+          label="FTP Passwort"
+          size="40"
+          required="false"
+          default=""
+        />
+      </fieldset>
+      <fieldset name="cms" label="CMS">
+        <field
+          name="prj_cms_url"
+          type="text"
+          label="CMS URL"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_cms_user"
+          type="text"
+          label="CMS Benutzername"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_cms_pass"
+          type="text"
+          label="CMS Passwort"
+          size="40"
+          required="false"
+          default=""
+        />
+      </fieldset>
+      <fieldset name="database" label="Datenbank">
+        <field
+          name="prj_myadmin_url"
+          type="text"
+          label="phpMyAdmin Adresse"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_myadmin_user"
+          type="text"
+          label="phpMyAdmin Benutzername"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+        name="prj_myadmin_pass"
+        type="text"
+        label="phpMyAdmin Passwort"
+        size="40"
+        required="false"
+        default=""
+        />
+        <field
+          name="prj_sql_dbname"
+          type="text"
+          label="Datenbank Adresse"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_sql_user"
+          type="text"
+          label="Datenbank Benutzername"
+          size="40"
+          required="false"
+          default=""
+        />
+        <field
+          name="prj_sql_pass"
+          type="text"
+          label="Datenbank Passwort"
+          size="40"
+          required="false"
+          default=""
+        />
+
+      </fieldset>
+    </fields>
+
+    <fields name="wartungsdaten" label="Wartungsvsertrag">
+      <fieldset name="wartungsvertrag" label="Wartungsvertrag">
+        <field
+          name="mtn_allowed"
+          type="radio"
+          default="0"
+          class="btn-group btn-group-yesno"
+          label="Wartungvertrag abgeschlossen?">
+          <option value="1">Ja</option>
+          <option value="0">Nein</option>
+        </field>
+        <field type="spacer" name="spacer" hr="true" />
+        <field
+          name="mtn_update_interval"
+          type="text"
+          label="Update Intervall"
+          size="40"
+          default=""
+        />
+        <field name="mtn_last_update"
+               type="calendar"
+               default="NOW"
+               label="Letztes Update"
+               description=""
+               class="input-medium"
+               required="false"
+               filter="user_utc"
+               showtime="true"
+               timeformat="24"
+               todaybutton="true"
+               weeknumbers="true"
+               filltable="true"
+        />
+
+      </fieldset>
+      <fieldset name="info" label="Informationen">
+        <field
+          name="mtn_mysiteguru"
+          type="radio"
+          default="0"
+          class="btn-group btn-group-yesno"
+          label="Mysiteguru?">
+          <option value="1">Ja</option>
+          <option value="0">Nein</option>
+        </field>
+        <field type="spacer" name="spacer" hr="true" />
+        <field
+          name="mtn_pagebuilder"
+          type="text"
+          label="Pagebuilder"
+          size="40"
+          default=""
+        />
+        <field
+          name="mtn_php_version"
+          type="text"
+          label="PHP Version"
+          size="40"
+          default=""
+        />
+        <field
+          name="mtn_cms_version"
+          type="text"
+          label="CMS"
+          size="40"
+          default=""
+        />
+      </fieldset>
+      <fieldset name="backup" label="Backup">
+        <field
+          name="mtn_backup_type"
+          type="radio"
+          default="false"
+          class="btn-group btn-group-yesno"
+          label="Backup Typ">
+          <option value="Kein Backup">Kein Backup</option>
+          <option value="AWS">AWS</option>
+          <option value="Manage WP">Manage WP</option>
+          <option value="Storagebox">Storagebox</option>
+          <option value="Lokal / Webserver">Lokal / Webserver</option>
+        </field>
+        <field name="mtn_last_backup"
+               type="calendar"
+               default="NOW"
+               label="Letztes Backup"
+               description=""
+               class="input-medium"
+               required="false"
+               filter="user_utc"
+               showtime="true"
+               timeformat="24"
+               todaybutton="true"
+               weeknumbers="true"
+               filltable="true"
+        />
+      </fieldset>
+    </fields>
+
+
+    <fields name="notizen" label="Notizen">
+      <fieldset name="notizen2" label="">
+            <field
+              name="all_notes"
+              type="editor"
+              label=""
+              default=""
+              description=""
+            />
+      </fieldset>
+    </fields>
+
+		<field
+			name="alias"
+			type="text"
+			label="JFIELD_ALIAS_LABEL"
+			size="45"
+			hint="JFIELD_ALIAS_PLACEHOLDER"
+		/>
+
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+			>
+			<option value="*">JALL</option>
+		</field>
+
+		<field
+			name="featured"
+			type="radio"
+			layout="joomla.form.field.radio.switcher"
+			label="JFEATURED"
+			default="0"
+			>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+
+		<field
+			name="published"
+			type="list"
+			label="JSTATUS"
+			default="1"
+			id="published"
+			class="custom-select-color-state"
+			size="1"
+			>
+			<option value="1">JPUBLISHED</option>
+			<option value="0">JUNPUBLISHED</option>
+			<option value="2">JARCHIVED</option>
+			<option value="-2">JTRASHED</option>
+		</field>
+
+		<field
+			name="publish_up"
+			type="calendar"
+			label="COM_VMMDATABASE_FIELD_PUBLISH_UP_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="publish_down"
+			type="calendar"
+			label="COM_VMMDATABASE_FIELD_PUBLISH_DOWN_LABEL"
+			translateformat="true"
+			showtime="true"
+			size="22"
+			filter="user_utc"
+		/>
+
+		<field
+			name="catid"
+			type="categoryedit"
+			label="JCATEGORY"
+			extension="com_vmmdatabase"
+			addfieldprefix="Joomla\Component\Categories\Administrator\Field"
+			required="false"
+			default=""
+		/>
+
+		<field
+			name="access"
+			type="accesslevel"
+			label="JFIELD_ACCESS_LABEL"
+			size="1"
+		/>
+
+		<field
+			name="checked_out"
+			type="hidden"
+			filter="unset"
+		/>
+
+		<field
+			name="checked_out_time"
+			type="hidden"
+			filter="unset"
+		/>
+
+		<field
+			name="ordering"
+			type="ordering"
+			label="JFIELD_ORDERING_LABEL"
+			content_type="com_vmmdatabase.customer"
+		/>
+
+		<field
+			name="tags"
+			type="tag"
+			label="JTAG"
+			class="advancedSelect"
+			multiple="true"
+		/>
+	</fieldset>
+</form>
