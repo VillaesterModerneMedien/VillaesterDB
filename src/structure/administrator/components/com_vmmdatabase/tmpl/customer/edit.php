@@ -33,11 +33,14 @@ $layout = 'edit';
 $tmpl = $input->get('tmpl', '', 'cmd') === 'component' ? '&tmpl=component' : '';
 //$fieldsetGroups = $this->form->getFieldsets('matrixFelder');
 $fieldsetGroups = [
-    'zugangsdaten',
-    'projektdaten',
-    'wartungsdaten',
-    'notizen'
+    'Zugangsdaten'  => [
+        'app_url',
+        'app_user',
+        'app_pass',
+        'app_key',
+    ]
 ];
+
 ?>
 <form
     action="<?php echo Route::_('index.php?option=com_vmmdatabase&layout=' . $layout . $tmpl . '&id=' . (int)$this->item->id); ?>"
@@ -46,29 +49,15 @@ $fieldsetGroups = [
     <?php echo LayoutHelper::render('joomla.edit.title_alias', $this); ?>
     <div>
         <?php echo HTMLHelper::_('uitab.startTabSet', 'myTab', ['active' => 'details']); ?>
+            <?php foreach ($fieldsetGroups as $groupName => $fields): ?>
+            <?= HTMLHelper::_('uitab.addTab', 'myTab', $groupName, Text::_($groupName)); ?>
 
-        <?php foreach ($fieldsetGroups as $group) :
-            $groupLabel = (string)$this->form->getXml()->xpath('//fields[@name="' . $group . '" and not(ancestor::field/form/*)]')[0]->attributes()['label'];
-
-            echo HTMLHelper::_('uitab.addTab', 'myTab', $group, Text::_($groupLabel));
-            $fieldsets = $this->form->getFieldsets($group); ?>
-            <?php foreach ($fieldsets as $name => $fieldset) : ?>
-                    <div class="row">
-                            <div class="col-12">
-                                <div class="card-header bg-light">
-                                    <?php echo $fieldset->label; ?>
-                                </div>
-                                <div class="card-body bg-light">
-                                    <?php $this->fieldset = $name; ?>
-                                    <?php echo LayoutHelper::render('joomla.edit.fieldset', $this); ?>
-                                </div>
-                            </div>
-                    </div>
-                    <hr />
-            <?php endforeach; ?>
-
-            <?php echo HTMLHelper::_('uitab.endTab');
+            <?php foreach($fields as $field){
+		            echo $this->form->renderField($field);
+                };
             ?>
+
+            <?php echo HTMLHelper::_('uitab.endTab'); ?>
         <?php endforeach; ?>
 
         <?php echo HTMLHelper::_('uitab.addTab', 'myTab', 'publishing', Text::_('JGLOBAL_FIELDSET_PUBLISHING')); ?>
